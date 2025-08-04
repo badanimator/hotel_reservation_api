@@ -1,4 +1,4 @@
-faker
+flask_resfaker
 flask-wtf
 humanize
 bs4
@@ -7,6 +7,7 @@ python-slugify
 sqlalchemy-utils
 requests
 authlib
+flask-restful
 flask-mail
 flask-login
 flask-migrate
