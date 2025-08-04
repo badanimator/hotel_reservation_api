@@ -1,0 +1,17 @@
+faker
+flask-wtf
+humanize
+bs4
+psycopg[binary]
+python-slugify
+sqlalchemy-utils
+requests
+authlib
+flask-mail
+flask-login
+flask-migrate
+flask-caching
+flask-sqlalchemy
+flask
+gunicorn
+pillow
