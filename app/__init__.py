@@ -14,8 +14,6 @@ from app.extensions import (
     cors, 
     migrate, 
     ma, 
-    session, 
-    socketio, 
     cache, 
     jwt, 
     limiter,
@@ -26,15 +24,12 @@ def create_app():
     app = Flask(__name__)
     config_name = os.getenv('FLASKCONFIG') or 'development'
     app.config.from_object(config[config_name])
-    app.config["SESSION_SQLALCHEMY"] = db
     config[config_name].init_app(app)
     api = Api(app)
     ma.init_app(ma)
     db.init_app(app)
     migrate.init_app(app, db)
     cors.init_app(app)
-    socketio.init_app(app, cors_allowed_origins="*")
-    session.init_app(app)
     cache.init_app(app)
     jwt.init_app(app)
     limiter.init_app(app)
