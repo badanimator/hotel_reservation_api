@@ -105,7 +105,7 @@ class ReservationSchema(ma.SQLAlchemySchema):
     id = fields.Integer(dump_only=True)
     check_in = fields.Date(required=True)
     check_out = fields.Date(required=True)
-    guest_count = fields.Integer(missing=1)
+    guest_count = fields.Integer(load_default=1)
     fullname = fields.String(required=True)
     email = fields.String(required=True)
     phone_number = PhoneNumberField(required=True)
@@ -126,16 +126,16 @@ class PaginationRequestSchema(ma.Schema):
     class Meta:
         unknown=EXCLUDE
         
-    page = fields.Integer(missing=1, validate=validate.Range(min=1))
-    per_page = fields.Integer(missing=10, validate=validate.Range(min=1))
+    page = fields.Integer(load_default=1, validate=validate.Range(min=1))
+    per_page = fields.Integer(load_default=10, validate=validate.Range(min=1))
 
 
 class MetaSchema(ma.Schema):
     class Meta():
         unknown=EXCLUDE
 
-    page = fields.Integer(missing=1)
-    per_page = fields.Integer(missing=10)
+    page = fields.Integer(load_default=1)
+    per_page = fields.Integer(load_default=10)
     pages = fields.Integer()
     total = fields.Integer()
     pages = fields.Integer()
