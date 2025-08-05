@@ -12,6 +12,8 @@ flask-wtf
 flask-mail
 flask-login
 flask-migrate
+flask-limiter
+flask_cors
 flask-caching
 flask-sqlalchemy
 flask_marshmallow
