@@ -14,5 +14,6 @@ flask-login
 flask-migrate
 flask-caching
 flask-sqlalchemy
+flask_jwt_extended
 gunicorn
 pillow
