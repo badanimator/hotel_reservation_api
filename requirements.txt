@@ -12,6 +12,7 @@ flask_cors
 flask-caching
 flask-sqlalchemy
 flask-marshmallow
+marshmallow-sqlalchemy
 flask-jwt-extended
 gunicorn
 pillow
