@@ -15,7 +15,7 @@ def register_db_event_listeners():
         notifications = [
             {
                 "title": "Reservation Received",
-                "message": "%s, booked a reservation(%s) from %s to %s. " % (target.fullname, target.room.name, target.check_out.strftime("%B %d, %Y"), target.check_in.strftime("%B %d, %Y")),
+                "message": "%s, booked a from %s to %s. " % (target.fullname, target.check_out.strftime("%B %d, %Y"), target.check_in.strftime("%B %d, %Y")),
                 "user_id": admin.id
             }
             for admin in admins
