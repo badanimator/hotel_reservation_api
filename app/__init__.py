@@ -17,6 +17,7 @@ from app.extensions import (
     cache, 
     jwt, 
     limiter,
+    mail
 )
 from config import config
 
@@ -28,6 +29,7 @@ def create_app():
     api = Api(app)
     ma.init_app(ma)
     db.init_app(app)
+    mail.init_app(app)
     migrate.init_app(app, db)
     cors.init_app(app)
     cache.init_app(app)

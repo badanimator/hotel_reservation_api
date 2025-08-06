@@ -15,7 +15,7 @@ class NotificationsView(Resource):
         if errors:= meta_schema.validate(args):
             abort(HTTPStatus.BAD_REQUEST, message=errors)
 
-        notifications = Notification.query.filter_by(user_id=user_id).order_by(
+        notifications = Notification.query.filter(Notification.user_id==int(user_id)).order_by(
             Notification.is_read, 
             Notification.created_at.desc()
         ).paginate(error_out=False, **MetaSchema(context={"method":"post"}).dump(args))

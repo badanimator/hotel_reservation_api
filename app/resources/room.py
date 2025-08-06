@@ -14,7 +14,7 @@ class RoomView(Resource):
         pagination_schema = PaginationRequestSchema()
         meta_schema = MetaSchema()
 
-        rooms = Room.query.order_by(
+        rooms = Room.query.filter(Room.images.any()).order_by(
             Room.created_at.desc()
         ).paginate(**pagination_schema.dump(request.args))
         

@@ -4,7 +4,8 @@ DATE_FORMAT = "%Y-%m-%dT%H:%M"
 
 class Regex:
     USERNAME = r"^[a-zA-Z0-9_]{3,20}$"
-    EMAIL = r"^[a-zA-Z0-9_]@[a-zA-Z0-9_]$"
+    EMAIL = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+
 
 class HTTPStatus:
     OK = 200

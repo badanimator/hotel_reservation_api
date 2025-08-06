@@ -14,6 +14,7 @@ flask_cors
 flask-caching
 flask-sqlalchemy
 flask-jwt-extended
+flask-mail
 marshmallow-sqlalchemy
 phonenumbers
 pillow

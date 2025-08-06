@@ -4,6 +4,7 @@ from sqlalchemy import MetaData
 from flask_jwt_extended import JWTManager
 from flask_caching import Cache
 from flask_migrate import Migrate
+from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 from flask_limiter import Limiter, RequestLimit
@@ -26,6 +27,7 @@ convention = {
 metadata = MetaData(naming_convention=convention)
 
 db = SQLAlchemy(metadata=metadata)
+mail = Mail()
 cors = CORS(supports_credentials=True)
 migrate = Migrate(directory=Config.MIGRATION_PATH, render_as_batch=True)
 ma = Marshmallow()

@@ -34,7 +34,20 @@ class ReservationView(Resource):
 
         db.session.add(reservation)
         db.session.commit()
-        return {"message":"Reservation booked."}, HTTPStatus.CREATED
+        return {
+            "message":"".join(
+                [
+                    "Hello %s, your reservation from %s to %s has been received. " 
+                    % (
+                        reservation.fullname, 
+                        reservation.check_out.strftime("%B %d, %Y"),
+                        reservation.check_in.strftime("%B %d, %Y")
+                    ),
+                    "We’ll confirm your reservation within 24 hours — no payment required upfront. ",
+                    "We’ll contact you at your phone number or your email."
+                ]
+            )
+        }, HTTPStatus.CREATED
     
 
     @jwt_required()

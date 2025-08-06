@@ -2,16 +2,26 @@ from marshmallow import fields, ValidationError
 import phonenumbers
 from phonenumbers import format_number, PhoneNumberFormat
 import humanize
-
-
+from datetime import datetime
+import re
+from app.constant import Regex
 
 
 class HumanTime(fields.Field):
     def _serialize(self, value, attr, obj, **kwargs):
-        if value is None:
-            return None
-        return humanize.naturaltime(value)
+        if value and isinstance(value, datetime):
+            return humanize.naturaltime(value)
+        return None
     
+class EmailField(fields.Field):
+    def _deserialize(self, value, attr, data, **kwargs):
+        if not re.match(Regex.EMAIL, value):
+            raise ValidationError("Not a valid email address.")
+        
+        return value.strip().lower()
+
+    def _serialize(self, value, attr, obj, **kwargs):
+        return value
 
 class PhoneNumberField(fields.Field):
     def _deserialize(self, value, attr, data, **kwargs):

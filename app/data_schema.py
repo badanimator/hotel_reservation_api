@@ -1,6 +1,6 @@
 from app.models import *
 from marshmallow import fields, validate, validates, EXCLUDE, ValidationError
-from app.fields import PhoneNumberField, HumanTime
+from app.fields import PhoneNumberField, HumanTime, EmailField
 from app.extensions import ma
 
 
@@ -107,12 +107,22 @@ class ReservationSchema(ma.SQLAlchemySchema):
     check_out = fields.Date(required=True)
     guest_count = fields.Integer(load_default=1)
     fullname = fields.String(required=True)
-    email = fields.String(required=True)
+    email = EmailField(required=True)
     phone_number = PhoneNumberField(required=True)
     room_id = fields.Integer(required=True, load_only=True)
     created_at = HumanTime(dump_only=True)
     updated_at = HumanTime(dump_only=True)
     room = fields.Nested(RoomSchema, dump_only=True)
+
+
+class SendUsMessageSchema(ma.Schema):
+    class Meta():
+        unknown=EXCLUDE
+    
+    fullname = fields.String(required=True, validate=validate.Length(min=4))
+    email = EmailField(required=True)
+    subject = fields.String(required=True, validate=validate.Length(min=6))
+    message = fields.String(required=True, validate=validate.Length(min=10))
 
 
 class LoginSchema(ma.Schema):
@@ -143,3 +153,4 @@ class MetaSchema(ma.Schema):
     prev_num = fields.Integer()
     has_next = fields.Boolean()
     has_prev = fields.Boolean()
+
