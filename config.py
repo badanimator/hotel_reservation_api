@@ -31,8 +31,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg://neondb_owner:npg_rdSK3Vupw5YC@ep-lucky-silence-ad3q1koy-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require"
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     
 class TestingConfig(Config):
@@ -49,3 +48,4 @@ config = {
     'production': ProductionConfig,
     'testing': TestingConfig,
     }
+
