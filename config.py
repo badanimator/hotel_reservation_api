@@ -23,7 +23,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("GMAIL_ADDRESS")
     MAIL_PASSWORD = os.environ.get("GMAIL_PASSWORD")
-    MAIL_DEFAULT_SENDER = os.environ.get("GMAIL_DEFAULT SENDER") or "test@gmail.com"
+    MAIL_DEFAULT_SENDER = os.environ.get("GMAIL_DEFAULT_SENDER") or "test@gmail.com"
 
     @staticmethod
     def init_app(app):
@@ -48,4 +48,5 @@ config = {
     'production': ProductionConfig,
     'testing': TestingConfig,
     }
+
 
